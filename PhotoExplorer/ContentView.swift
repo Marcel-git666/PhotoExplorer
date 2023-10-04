@@ -8,17 +8,56 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject private var viewModel: FlickrAuthViewModel
+    @State private var isShowingSafariView = false
+    @State private var safariURL: URL?
+    
+    init(flickrOAuthService: FlickrOAuthService) {
+        self.viewModel = FlickrAuthViewModel(flickrOAuthService: flickrOAuthService)
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                Text("Authentication State: \(viewModel.authenticationState.rawValue)")
+                    .padding()
+                
+                if viewModel.authenticationState == .noAuthenticationAttempted {
+                    Button("Authorize") {
+                        viewModel.authorize()
+                    }
+                    .padding()
+                } else if viewModel.authenticationState == .successfullyAuthenticated {
+                    Text("Authenticated!")
+                        .padding()
+                    
+                    Button("Logout") {
+                        viewModel.logout()
+                    }
+                    .padding()
+                }
+                
+                if let authUrl = viewModel.authUrl {
+//                    print("Auth URL: \(authUrl)") 
+                    NavigationLink("", destination: SafariView(url: authUrl), isActive: $isShowingSafariView)
+                        .hidden()
+                        .onAppear {
+                            safariURL = authUrl
+                            isShowingSafariView = true
+                        }
+                }
+            }
+            .navigationTitle("Flickr OAuth Example")
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+#if DEBUG
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let flickrOAuthService = FlickrOAuthService()
+        
+        return ContentView(flickrOAuthService: flickrOAuthService)
+    }
 }
+#endif

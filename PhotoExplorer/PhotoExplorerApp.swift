@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct PhotoExplorerApp: App {
+    let flickrOAuthService = FlickrOAuthService() // Create an instance of FlickrOAuthService
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            ContentView(flickrOAuthService: flickrOAuthService)
         }
     }
 }

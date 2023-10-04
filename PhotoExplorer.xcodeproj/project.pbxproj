@@ -14,6 +14,17 @@
 		1F19B4A92ACB281200D46FC1 /* PhotoExplorerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4A82ACB281200D46FC1 /* PhotoExplorerTests.swift */; };
 		1F19B4B32ACB281200D46FC1 /* PhotoExplorerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4B22ACB281200D46FC1 /* PhotoExplorerUITests.swift */; };
 		1F19B4B52ACB281200D46FC1 /* PhotoExplorerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4B42ACB281200D46FC1 /* PhotoExplorerUITestsLaunchTests.swift */; };
+		1F19B4C22ACB293A00D46FC1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4C12ACB293A00D46FC1 /* Constants.swift */; };
+		1F19B4C52ACB373200D46FC1 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4C42ACB373200D46FC1 /* FlickrAPI.swift */; };
+		1F19B4C72ACB37A000D46FC1 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4C62ACB37A000D46FC1 /* Endpoint.swift */; };
+		1F19B4C92ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4C82ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift */; };
+		1F19B4CB2ACB3B1E00D46FC1 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4CA2ACB3B1E00D46FC1 /* Photo.swift */; };
+		1F19B4CD2ACBE46F00D46FC1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4CC2ACBE46F00D46FC1 /* NetworkManager.swift */; };
+		1F19B4D02ACC077500D46FC1 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F19B4CF2ACC077500D46FC1 /* OAuthSwift */; };
+		1F19B4D22ACC68D400D46FC1 /* FlickrAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D12ACC68D400D46FC1 /* FlickrAuthService.swift */; };
+		1F19B4D42ACC8D2300D46FC1 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D32ACC8D2300D46FC1 /* AuthenticationState.swift */; };
+		1F19B4D62ACC994000D46FC1 /* FlickrAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D52ACC994000D46FC1 /* FlickrAuthViewModel.swift */; };
+		1F19B4D82ACC99F800D46FC1 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D72ACC99F800D46FC1 /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +55,17 @@
 		1F19B4AE2ACB281200D46FC1 /* PhotoExplorerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoExplorerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F19B4B22ACB281200D46FC1 /* PhotoExplorerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExplorerUITests.swift; sourceTree = "<group>"; };
 		1F19B4B42ACB281200D46FC1 /* PhotoExplorerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExplorerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1F19B4C12ACB293A00D46FC1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1F19B4C42ACB373200D46FC1 /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
+		1F19B4C62ACB37A000D46FC1 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1F19B4C82ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotosResponse.swift; sourceTree = "<group>"; };
+		1F19B4CA2ACB3B1E00D46FC1 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		1F19B4CC2ACBE46F00D46FC1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1F19B4D12ACC68D400D46FC1 /* FlickrAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAuthService.swift; sourceTree = "<group>"; };
+		1F19B4D32ACC8D2300D46FC1 /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
+		1F19B4D52ACC994000D46FC1 /* FlickrAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAuthViewModel.swift; sourceTree = "<group>"; };
+		1F19B4D72ACC99F800D46FC1 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		1F8877BE2ACDF8AF0058B962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F19B4D02ACC077500D46FC1 /* OAuthSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +117,17 @@
 		1F19B4962ACB281000D46FC1 /* PhotoExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				1F8877BE2ACDF8AF0058B962 /* Info.plist */,
 				1F19B4972ACB281000D46FC1 /* PhotoExplorerApp.swift */,
+				1F19B4C32ACB372200D46FC1 /* Models */,
+				1F19B4C12ACB293A00D46FC1 /* Constants.swift */,
 				1F19B4992ACB281000D46FC1 /* ContentView.swift */,
+				1F19B4D72ACC99F800D46FC1 /* SafariView.swift */,
 				1F19B49B2ACB281200D46FC1 /* Assets.xcassets */,
 				1F19B49D2ACB281200D46FC1 /* Preview Content */,
+				1F19B4CC2ACBE46F00D46FC1 /* NetworkManager.swift */,
+				1F19B4D12ACC68D400D46FC1 /* FlickrAuthService.swift */,
+				1F19B4D52ACC994000D46FC1 /* FlickrAuthViewModel.swift */,
 			);
 			path = PhotoExplorer;
 			sourceTree = "<group>";
@@ -127,6 +157,18 @@
 			path = PhotoExplorerUITests;
 			sourceTree = "<group>";
 		};
+		1F19B4C32ACB372200D46FC1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F19B4C42ACB373200D46FC1 /* FlickrAPI.swift */,
+				1F19B4D32ACC8D2300D46FC1 /* AuthenticationState.swift */,
+				1F19B4C62ACB37A000D46FC1 /* Endpoint.swift */,
+				1F19B4C82ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift */,
+				1F19B4CA2ACB3B1E00D46FC1 /* Photo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +185,9 @@
 			dependencies = (
 			);
 			name = PhotoExplorer;
+			packageProductDependencies = (
+				1F19B4CF2ACC077500D46FC1 /* OAuthSwift */,
+			);
 			productName = PhotoExplorer;
 			productReference = 1F19B4942ACB281000D46FC1 /* PhotoExplorer.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +260,9 @@
 				Base,
 			);
 			mainGroup = 1F19B48B2ACB281000D46FC1;
+			packageReferences = (
+				1F19B4CE2ACC077500D46FC1 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+			);
 			productRefGroup = 1F19B4952ACB281000D46FC1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +305,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F19B4CB2ACB3B1E00D46FC1 /* Photo.swift in Sources */,
+				1F19B4C92ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift in Sources */,
+				1F19B4D62ACC994000D46FC1 /* FlickrAuthViewModel.swift in Sources */,
 				1F19B49A2ACB281000D46FC1 /* ContentView.swift in Sources */,
+				1F19B4D82ACC99F800D46FC1 /* SafariView.swift in Sources */,
+				1F19B4C52ACB373200D46FC1 /* FlickrAPI.swift in Sources */,
+				1F19B4D22ACC68D400D46FC1 /* FlickrAuthService.swift in Sources */,
+				1F19B4CD2ACBE46F00D46FC1 /* NetworkManager.swift in Sources */,
 				1F19B4982ACB281000D46FC1 /* PhotoExplorerApp.swift in Sources */,
+				1F19B4C22ACB293A00D46FC1 /* Constants.swift in Sources */,
+				1F19B4C72ACB37A000D46FC1 /* Endpoint.swift in Sources */,
+				1F19B4D42ACC8D2300D46FC1 /* AuthenticationState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,11 +483,13 @@
 				DEVELOPMENT_TEAM = P3K32DW2KW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,11 +514,13 @@
 				DEVELOPMENT_TEAM = P3K32DW2KW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,6 +650,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1F19B4CE2ACC077500D46FC1 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1F19B4CF2ACC077500D46FC1 /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F19B4CE2ACC077500D46FC1 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1F19B48C2ACB281000D46FC1 /* Project object */;
 }
