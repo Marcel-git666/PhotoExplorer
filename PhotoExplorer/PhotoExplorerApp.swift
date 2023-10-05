@@ -9,12 +9,18 @@ import SwiftUI
 
 @main
 struct PhotoExplorerApp: App {
-    let flickrOAuthService = FlickrOAuthService() // Create an instance of FlickrOAuthService
-    
+    @StateObject private var flickrAuthViewModel = FlickrAuthViewModel(flickrOAuthService: FlickrOAuthService())
+
     var body: some Scene {
         WindowGroup {
-            
-            ContentView(flickrOAuthService: flickrOAuthService)
+            ContentView()
+                .environmentObject(flickrAuthViewModel)
+                .onOpenURL { url in
+                    // Check if the URL scheme matches your app's URL scheme
+                    if url.scheme == FLICKR_URL_SCHEME {
+                        flickrAuthViewModel.handleOAuthCallback(url: url)
+                    }
+                }
         }
     }
 }

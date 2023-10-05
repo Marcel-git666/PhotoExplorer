@@ -13,7 +13,7 @@ import SwiftUI
 
 let FLICKR_CONSUMER_KEY = FlickrAPI.apiKey
 let FLICKR_CONSUMER_SECRET = FlickrAPI.secret
-let FLICKR_URL_SCHEME = "photoexplorer"
+let FLICKR_URL_SCHEME = "flickrsdk"
 
 
 
@@ -139,6 +139,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
                                                    oauthCallbackConfirmed: attributes["oauth_callback_confirmed"] ?? "")
             complete(result)
         }
+        print("•••\nRequest OAuth Token completed\n•••")
         task.resume()
     }
     
@@ -200,6 +201,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
                                                     screenName: attributes["username"] ?? "")
             complete(result)
         }
+        print("•••\nRequest Access Token completed\n•••")
         task.resume()
     }
     
@@ -285,6 +287,18 @@ class FlickrOAuthService: NSObject, ObservableObject {
         self.authenticationState = .noAuthenticationAttempted
     }
     
+    func handleOAuthCallback(url: URL, completion: @escaping (Result<RequestAccessTokenResponse, Error>) -> Void) { 
+            // Handle OAuth callback and retrieve access token
+            // Call the completion handler with the access token or an error
+        let accessTokenResponse = RequestAccessTokenResponse(accessToken: "your_access_token", accessTokenSecret: "your_access_token_secret", userId: "user_id", screenName: "username")
+        completion(.success(accessTokenResponse))
+        }
+    
+        
+        func getUserPhotos(completion: @escaping (Result<Data, Error>) -> Void) {
+            // Make authenticated API request to get user photos
+            // Call the completion handler with the API response data or an error
+        }
     
     class KeychainPreferences {
         static let shared = KeychainPreferences()

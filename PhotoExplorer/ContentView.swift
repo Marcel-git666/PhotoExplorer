@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var viewModel: FlickrAuthViewModel
+    @EnvironmentObject private var viewModel: FlickrAuthViewModel
     @State private var isShowingSafariView = false
     @State private var safariURL: URL?
     
-    init(flickrOAuthService: FlickrOAuthService) {
-        self.viewModel = FlickrAuthViewModel(flickrOAuthService: flickrOAuthService)
-    }
+    //    init(flickrOAuthService: FlickrOAuthService) {
+    //        self.viewModel = FlickrAuthViewModel(flickrOAuthService: flickrOAuthService)
+    //    }
     
     var body: some View {
         NavigationView {
@@ -38,12 +38,17 @@ struct ContentView: View {
                 }
                 
                 if let authUrl = viewModel.authUrl {
-//                    print("Auth URL: \(authUrl)") 
+                    //                    print("Auth URL: \(authUrl)")
                     NavigationLink("", destination: SafariView(url: authUrl), isActive: $isShowingSafariView)
                         .hidden()
                         .onAppear {
                             safariURL = authUrl
                             isShowingSafariView = true
+                        }
+                        .onChange(of: viewModel.isAuthenticationCompleted) { isCompleted in
+                            if isCompleted {
+                                isShowingSafariView = false // Dismiss SafariView
+                            }
                         }
                 }
             }
@@ -57,7 +62,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let flickrOAuthService = FlickrOAuthService()
         
-        return ContentView(flickrOAuthService: flickrOAuthService)
+        return ContentView()
     }
 }
 #endif

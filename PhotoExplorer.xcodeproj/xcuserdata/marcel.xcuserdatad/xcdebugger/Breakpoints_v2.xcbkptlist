@@ -176,53 +176,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "53CF8480-69C8-4D2D-A3C0-C092F08D5E7F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoExplorer/FlickrAuthViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "handleOAuthCallback(url:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "53CF8480-69C8-4D2D-A3C0-C092F08D5E7F - 1d04049e49e90e87"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhotoExplorer.FlickrAuthViewModel.handleOAuthCallback(url: Foundation.URL) -&gt; ()"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/FlickrAuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "55">
-               </Location>
-               <Location
-                  uuid = "53CF8480-69C8-4D2D-A3C0-C092F08D5E7F - bdaa10b9c3871cde"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;PhotoExplorer.FlickrOAuthService.RequestAccessTokenResponse, Swift.Error&gt;) -&gt; () in PhotoExplorer.FlickrAuthViewModel.handleOAuthCallback(url: Foundation.URL) -&gt; ()"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/FlickrAuthViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

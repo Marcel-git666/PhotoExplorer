@@ -8,10 +8,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>photoexplorer</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>photoexplorer</string>
+				<string>flickrsdk</string>
 			</array>
 		</dict>
 	</array>

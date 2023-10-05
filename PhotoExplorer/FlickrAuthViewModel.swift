@@ -10,6 +10,7 @@ import Combine
 
 class FlickrAuthViewModel: ObservableObject {
     @Published var authenticationState: AuthenticationState = .noAuthenticationAttempted
+    @Published var isAuthenticationCompleted = false
     private var flickrOAuthService: FlickrOAuthService
     
     var authUrl: URL? {
@@ -29,6 +30,14 @@ class FlickrAuthViewModel: ObservableObject {
     // For example:
     func authorize() {
         flickrOAuthService.authorize()
+    }
+    
+    func handleOAuthCallback(url: URL) {
+        // Parse the OAuth callback URL and handle the response
+        
+        // If authentication is successful, set isAuthenticated to true
+        authenticationState = .successfullyAuthenticated
+        isAuthenticationCompleted = true
     }
     
     func logout() {
