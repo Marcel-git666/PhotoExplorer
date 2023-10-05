@@ -33,6 +33,10 @@ class FlickrOAuthService: NSObject, ObservableObject {
         willSet { self.objectWillChange.send(self) }
     }
     
+    @Published var isAuthenticationCompleted: Bool = false {
+            willSet { self.objectWillChange.send(self) }
+        }
+    
     @Published var oauthClient: OAuthSwiftClient?
     
     var callbackObserver: Any? {
@@ -137,6 +141,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
             let result = RequestOAuthTokenResponse(oauthToken: attributes["oauth_token"] ?? "",
                                                    oauthTokenSecret: attributes["oauth_token_secret"] ?? "",
                                                    oauthCallbackConfirmed: attributes["oauth_callback_confirmed"] ?? "")
+            UserDefaults.standard.set(result.oauthTokenSecret, forKey: "oauthTokenSecret")
             complete(result)
         }
         print("•••\nRequest OAuth Token completed\n•••")
@@ -164,46 +169,54 @@ class FlickrOAuthService: NSObject, ObservableObject {
         }
     }
 
-    func requestAccessToken(args: RequestAccessTokenInput,
-                            _ complete: @escaping (RequestAccessTokenResponse) -> Void) {
+    func requestAccessToken(args: RequestAccessTokenInput, _ complete: @escaping (Result<RequestAccessTokenResponse, Error>) -> Void) {
         let request = (url: FlickrAPI.accessTokenURL, httpMethod: "POST")
         
         var params: [String: Any] = [
             "oauth_token" : args.requestToken,
             "oauth_verifier" : args.oauthVerifier,
             "oauth_consumer_key" : args.consumerKey,
-            "oauth_nonce" : UUID().uuidString, // nonce can be any 32-bit string made up of random ASCII values
+            "oauth_nonce" : UUID().uuidString,
             "oauth_signature_method" : "HMAC-SHA1",
-            "oauth_timestamp" : String(Int(NSDate().timeIntervalSince1970)),
+            "oauth_timestamp" : String(Int(Date().timeIntervalSince1970)),
             "oauth_version" : "1.0"
         ]
         
-        // Build the OAuth Signature from Parameters
         params["oauth_signature"] = oauthSignature(httpMethod: request.httpMethod,
-                                                   url: request.url,
-                                                   params: params, consumerSecret: args.consumerSecret,
-                                                   oauthTokenSecret: args.requestTokenSecret)
+                                                    url: request.url,
+                                                    params: params,
+                                                    consumerSecret: args.consumerSecret,
+                                                    oauthTokenSecret: args.requestTokenSecret)
         
-        // Once OAuth Signature is included in our parameters, build the authorization header
         let authHeader = authorizationHeader(params: params)
         
-        guard let url = URL(string: request.url) else { return }
+        guard let url = URL(string: request.url) else {
+            complete(.failure(NSError(domain: "FlickrOAuthService", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            return
+        }
+        
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.httpMethod
         urlRequest.setValue(authHeader, forHTTPHeaderField: "Authorization")
+        
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            guard let data = data else { return }
-            guard let dataString = String(data: data, encoding: .utf8) else { return }
-            let attributes = dataString.urlQueryStringParameters
-            let result = RequestAccessTokenResponse(accessToken: attributes["oauth_token"] ?? "",
-                                                    accessTokenSecret: attributes["oauth_token_secret"] ?? "",
-                                                    userId: attributes["user_nsid"] ?? "",
-                                                    screenName: attributes["username"] ?? "")
-            complete(result)
+            guard let data = data else {
+                complete(.failure(NSError(domain: "FlickrOAuthService", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid response data"])))
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let accessTokenResponse = try decoder.decode(RequestAccessTokenResponse.self, from: data)
+                complete(.success(accessTokenResponse))
+            } catch {
+                complete(.failure(error))
+            }
         }
-        print("•••\nRequest Access Token completed\n•••")
+        
         task.resume()
     }
+    
     
     @Published var credential: RequestAccessTokenResponse? {
         willSet { self.objectWillChange.send(self) }
@@ -226,14 +239,14 @@ class FlickrOAuthService: NSObject, ObservableObject {
         }
 
         // Continue with authorization if no saved credentials were found
-        
+
         self.showSheet = true // opens the sheet containing our safari view
-        
+
         // Start Step 1: Requesting an access token
         let oAuthTokenInput = RequestOAuthTokenInput(consumerKey: FLICKR_CONSUMER_KEY,
                                                      consumerSecret: FLICKR_CONSUMER_SECRET,
                                                      callbackScheme: FLICKR_URL_SCHEME)
-        
+
         requestOAuthToken(args: oAuthTokenInput) { oAuthTokenResponse in
             // Kick off our Step 2 observer: start listening for user login callback in scene delegate (from handleOpenUrl)
             self.callbackObserver = NotificationCenter.default.addObserver(forName: .flickrCallback, object: nil, queue: .main) { notification in
@@ -243,42 +256,52 @@ class FlickrOAuthService: NSObject, ObservableObject {
                 guard let url = notification.object as? URL else { return }
                 guard let parameters = url.query?.urlQueryStringParameters else { return }
                 guard let verifier = parameters["oauth_verifier"] else { return }
-                
+
                 // Start Step 3: Request Access Token
                 let accessTokenInput = RequestAccessTokenInput(consumerKey: FLICKR_CONSUMER_KEY,
                                                                consumerSecret: FLICKR_CONSUMER_SECRET,
                                                                requestToken: oAuthTokenResponse.oauthToken,
                                                                requestTokenSecret: oAuthTokenResponse.oauthTokenSecret,
                                                                oauthVerifier: verifier)
-                
-                self.requestAccessToken(args: accessTokenInput) { accessTokenResponse in
-                    // Process Completed Successfully!
-                    DispatchQueue.main.async {
-                        self.credential = accessTokenResponse
-                        self.authUrl = nil
-                        
-                        // Save credentials to keychain
-                        keychain.saveCredentialsToKeychain(accessTokenResponse)
-                        
-                        // Set your OAuth client accordingly
-                        self.oauthClient = self.createOAuthClient(args: FlickrOAuthClientInput(consumerKey: FLICKR_CONSUMER_KEY,
-                                                                                               consumerSecret: FLICKR_CONSUMER_SECRET,
-                                                                                               accessToken: self.credential!.accessToken,
-                                                                                               accessTokenSecret: self.credential!.accessTokenSecret))
+
+                self.requestAccessToken(args: accessTokenInput) { result in
+                    switch result {
+                    case .success(let accessTokenResponse):
+                        // Process Completed Successfully!
+                        DispatchQueue.main.async {
+                            self.credential = accessTokenResponse
+                            self.authUrl = nil
+
+                            // Save credentials to keychain
+                            keychain.saveCredentialsToKeychain(accessTokenResponse)
+
+                            // Set your OAuth client accordingly
+                            self.oauthClient = self.createOAuthClient(args: FlickrOAuthClientInput(consumerKey: FLICKR_CONSUMER_KEY,
+                                                                                                   consumerSecret: FLICKR_CONSUMER_SECRET,
+                                                                                                   accessToken: accessTokenResponse.accessToken,
+                                                                                                   accessTokenSecret: accessTokenResponse.accessTokenSecret))
+                        }
+
+                        self.authenticationState = .successfullyAuthenticated
+                    case .failure(let error):
+                        // Handle the authentication failure
+                        print("Authentication failed: \(error)")
+                        // Update your ViewModel's properties or perform any necessary actions to indicate failure
+                        self.authenticationState = .failedAuthentication
+                        self.isAuthenticationCompleted = true
                     }
-                    
-                    self.authenticationState = .successfullyAuthenticated
                 }
-            }
-            
-            // Start Step 2: User Flickr Login
-            let urlString = "\(FlickrAPI.authorizeURL)?oauth_token=\(oAuthTokenResponse.oauthToken)&perms=write"
-            guard let oauthUrl = URL(string: urlString) else { return }
-            DispatchQueue.main.async {
-                self.authUrl = oauthUrl // sets our safari view url
+
+                // Start Step 2: User Flickr Login
+                let urlString = "\(FlickrAPI.authorizeURL)?oauth_token=\(oAuthTokenResponse.oauthToken)&perms=write"
+                guard let oauthUrl = URL(string: urlString) else { return }
+                DispatchQueue.main.async {
+                    self.authUrl = oauthUrl // sets our safari view url
+                }
             }
         }
     }
+
 
     
     func logout() {
@@ -287,13 +310,77 @@ class FlickrOAuthService: NSObject, ObservableObject {
         self.authenticationState = .noAuthenticationAttempted
     }
     
-    func handleOAuthCallback(url: URL, completion: @escaping (Result<RequestAccessTokenResponse, Error>) -> Void) { 
-            // Handle OAuth callback and retrieve access token
-            // Call the completion handler with the access token or an error
-        let accessTokenResponse = RequestAccessTokenResponse(accessToken: "your_access_token", accessTokenSecret: "your_access_token_secret", userId: "user_id", screenName: "username")
-        completion(.success(accessTokenResponse))
+    func handleOAuthCallback(url: URL, completion: @escaping (Result<RequestAccessTokenResponse, Error>) -> Void) {
+        guard let parameters = url.query?.urlQueryStringParameters,
+              let oauthToken = parameters["oauth_token"],
+              let oauthVerifier = parameters["oauth_verifier"],
+              let oauthTokenSecret = UserDefaults.standard.string(forKey: "oauthTokenSecret") else {
+            // Handle the case where parameters are missing or cannot be extracted.
+            // You can indicate an error or failure state here.
+            print("Error: Missing or invalid parameters in the callback URL")
+            let error = NSError(domain: "FlickrOAuthService", code: 400, userInfo: [NSLocalizedDescriptionKey: "Missing or invalid parameters in the callback URL"])
+            completion(.failure(error))
+            return
         }
+
+        // Now you have oauthToken, oauthVerifier, and oauthTokenSecret, you can use them to request the access token.
+        // Call the appropriate API endpoint to exchange oauthToken, oauthVerifier, and oauthTokenSecret for the access token and other required information.
+        let accessTokenInput = FlickrOAuthService.RequestAccessTokenInput(consumerKey: FLICKR_CONSUMER_KEY,
+                                                                          consumerSecret: FLICKR_CONSUMER_SECRET,
+                                                                          requestToken: oauthToken,
+                                                                          requestTokenSecret: oauthTokenSecret,
+                                                                          oauthVerifier: oauthVerifier)
+
+        requestAccessToken(args: accessTokenInput) { result in
+            switch result {
+            case .success(let accessTokenResponse):
+                // Authentication successful, handle the credential
+                print("Authentication successful: \(accessTokenResponse)")
+                // Update your ViewModel's properties or perform any necessary actions
+                self.authenticationState = .successfullyAuthenticated
+                self.isAuthenticationCompleted = true
+                // Assign credential to your property if needed
+                if case .success = result {
+                    self.credential = accessTokenResponse
+                }
+                completion(result)
+            case .failure(let error):
+                // Handle the authentication failure
+                print("Authentication failed: \(error)")
+                // Update your ViewModel's properties or perform any necessary actions to indicate failure
+                self.authenticationState = .failedAuthentication
+                self.isAuthenticationCompleted = true
+                completion(.failure(error))
+            }
+        }
+    }
+
+
+
     
+    func generateAPISignature(params: [String: Any], secret: String) -> String {
+            let sortedParams = params.sorted { $0.key < $1.key }
+            var paramString = ""
+            
+            for (key, value) in sortedParams {
+                let encodedKey = key.urlEncoded
+                let encodedValue = "\(value)".urlEncoded
+                paramString += "\(encodedKey)=\(encodedValue)"
+            }
+            
+            paramString += secret
+            
+            guard let data = paramString.data(using: .utf8) else {
+                return ""
+            }
+            
+            var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+            _ = data.withUnsafeBytes {
+                CC_MD5($0.baseAddress, UInt32(data.count), &digest)
+            }
+            
+            return digest.map { String(format: "%02hhx", $0) }.joined()
+        }
     
     class KeychainPreferences {
         static let shared = KeychainPreferences()
@@ -419,17 +506,23 @@ extension FlickrOAuthService {
             return
         }
         
-        // Make an authenticated API request to get user photos
-        let apiUrl = "https://api.flickr.com/services/rest/"
-        let method = "flickr.people.getPhotos"
-        let params: [String: Any] = [
-            "method": method,
-            "format": "json",
-            "nojsoncallback": "1",
-            "extras": "url_m", // Include the URL of the medium-sized photo
-            "user_id": credential?.userId ?? "" // User ID of the authenticated user
-        ]
+        let oauthToken = client.credential.oauthToken 
         
+        // Make an authenticated API request to get user photos
+        let apiUrl = FlickrAPI.baseURLString
+        let method = Endpoint.forLocationPhotos.rawValue
+        var params: [String: Any] = [
+            "method": method,
+            "api_key": FlickrAPI.apiKey,
+            "lat": K.niagaraFallsLatitude,
+            "lon": K.niagaraFallsLongitude,
+            "accuracy": 1,
+            "format": "rest",
+            "auth_token": oauthToken
+        ]
+        let apiSig = generateAPISignature(params: params, secret: FlickrAPI.secret)
+        params["api_sig"] = apiSig
+
         client.get(apiUrl, parameters: params) { result in
             switch result {
             case .success(let response):

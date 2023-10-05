@@ -50,7 +50,7 @@ struct ContentView: View {
                 }
                 
                 if let authUrl = viewModel.authUrl {
-                    //                    print("Auth URL: \(authUrl)")
+                    Text("Auth URL: \(authUrl)")
                     NavigationLink("", destination: SafariView(url: authUrl), isActive: $isShowingSafariView)
                         .hidden()
                         .onAppear {
@@ -72,7 +72,7 @@ struct ContentView: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let flickrOAuthService = FlickrOAuthService()
+//        let flickrOAuthService = FlickrOAuthService()
         
         return ContentView()
     }

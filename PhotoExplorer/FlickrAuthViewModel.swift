@@ -11,6 +11,9 @@ import Combine
 class FlickrAuthViewModel: ObservableObject {
     @Published var authenticationState: AuthenticationState = .noAuthenticationAttempted
     @Published var isAuthenticationCompleted = false
+    @Published var credential: FlickrOAuthService.RequestAccessTokenResponse?
+    @Published var shouldNavigateToSafari = false
+
     private var flickrOAuthService: FlickrOAuthService
     
     var authUrl: URL? {
@@ -19,10 +22,12 @@ class FlickrAuthViewModel: ObservableObject {
     
     init(flickrOAuthService: FlickrOAuthService) {
         self.flickrOAuthService = flickrOAuthService
-        self.flickrOAuthService.oauthClient = flickrOAuthService.createOAuthClient(args: FlickrOAuthService.FlickrOAuthClientInput(consumerKey: FLICKR_CONSUMER_KEY, consumerSecret: FLICKR_CONSUMER_SECRET, accessToken: self.flickrOAuthService.credential?.accessToken ?? "", accessTokenSecret: self.flickrOAuthService.credential?.accessTokenSecret ?? ""))
         // Subscribe to authenticationState changes from FlickrOAuthService
         self.flickrOAuthService.objectWillChange.sink { [weak self] _ in
             self?.objectWillChange.send()
+            if self?.flickrOAuthService.authenticationState == .successfullyAuthenticated {
+                self?.isAuthenticationCompleted = true
+            }
         }.store(in: &cancellables)
     }
     
@@ -33,12 +38,27 @@ class FlickrAuthViewModel: ObservableObject {
     }
     
     func handleOAuthCallback(url: URL) {
-        // Parse the OAuth callback URL and handle the response
-        
-        // If authentication is successful, set isAuthenticated to true
-        authenticationState = .successfullyAuthenticated
-        isAuthenticationCompleted = true
-    }
+            flickrOAuthService.handleOAuthCallback(url: url) { [weak self] result in
+                switch result {
+                case .success(let accessTokenResponse):
+                    // Authentication successful, handle the credential
+                    print("Authentication successful: \(accessTokenResponse)")
+                    // Update your ViewModel's properties or perform any necessary actions
+                    self?.authenticationState = .successfullyAuthenticated
+                    self?.isAuthenticationCompleted = true
+                    // Handle accessTokenResponse if needed
+                case .failure(let error):
+                    // Handle the authentication failure
+                    print("Authentication failed: \(error)")
+                    // Update your ViewModel's properties or perform any necessary actions to indicate failure
+                    self?.authenticationState = .failedAuthentication
+                }
+            }
+        }
+
+
+
+
     
     func getUserPhotos(completion: @escaping (Result<Data, Error>) -> Void) {
         flickrOAuthService.getUserPhotos(completion: completion)
