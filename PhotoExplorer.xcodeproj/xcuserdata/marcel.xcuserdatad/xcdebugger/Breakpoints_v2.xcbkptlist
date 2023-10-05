@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9E829C5B-84DC-4DA6-88AC-2810A9245A12"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4FF95E3D-95B9-4C00-A463-EF996894EAEC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoExplorer/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getPhotos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4FF95E3D-95B9-4C00-A463-EF996894EAEC - 640416c00212d372"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "235">
+               </Location>
+               <Location
+                  uuid = "4FF95E3D-95B9-4C00-A463-EF996894EAEC - 640416c00212d372"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "338">
+               </Location>
+               <Location
+                  uuid = "4FF95E3D-95B9-4C00-A463-EF996894EAEC - 640416c00212d372"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "540">
+               </Location>
+               <Location
+                  uuid = "4FF95E3D-95B9-4C00-A463-EF996894EAEC - 640416c00212d372"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "480">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58EF1ED5-A488-43AA-A39E-67E85E4BC57B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoExplorer/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "getPhotos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "58EF1ED5-A488-43AA-A39E-67E85E4BC57B - ede9035a139900e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "222">
+               </Location>
+               <Location
+                  uuid = "58EF1ED5-A488-43AA-A39E-67E85E4BC57B - ede9035a139900e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "402">
+               </Location>
+               <Location
+                  uuid = "58EF1ED5-A488-43AA-A39E-67E85E4BC57B - ede9035a139900e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "58EF1ED5-A488-43AA-A39E-67E85E4BC57B - ede9035a139900e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PhotoExplorer.NetworkManager.getPhotos() async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "408">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "917AF99E-DB2D-4224-8CA5-9B108A68449F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoExplorer/FlickrAuthService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "authorize()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53CF8480-69C8-4D2D-A3C0-C092F08D5E7F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoExplorer/FlickrAuthViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "handleOAuthCallback(url:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "53CF8480-69C8-4D2D-A3C0-C092F08D5E7F - 1d04049e49e90e87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotoExplorer.FlickrAuthViewModel.handleOAuthCallback(url: Foundation.URL) -&gt; ()"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/FlickrAuthViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "55">
+               </Location>
+               <Location
+                  uuid = "53CF8480-69C8-4D2D-A3C0-C092F08D5E7F - bdaa10b9c3871cde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;PhotoExplorer.FlickrOAuthService.RequestAccessTokenResponse, Swift.Error&gt;) -&gt; () in PhotoExplorer.FlickrAuthViewModel.handleOAuthCallback(url: Foundation.URL) -&gt; ()"
+                  moduleName = "PhotoExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/FlickrAuthViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
