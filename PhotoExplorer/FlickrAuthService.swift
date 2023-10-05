@@ -294,11 +294,6 @@ class FlickrOAuthService: NSObject, ObservableObject {
         completion(.success(accessTokenResponse))
         }
     
-        
-        func getUserPhotos(completion: @escaping (Result<Data, Error>) -> Void) {
-            // Make authenticated API request to get user photos
-            // Call the completion handler with the API response data or an error
-        }
     
     class KeychainPreferences {
         static let shared = KeychainPreferences()
@@ -415,9 +410,36 @@ extension FlickrOAuthService {
         
         return client
     }
-    
-    
-    
 }
 
+extension FlickrOAuthService {
+    func getUserPhotos(completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let client = oauthClient else {
+            completion(.failure(NSError(domain: "FlickrOAuthService", code: 401, userInfo: [NSLocalizedDescriptionKey: "User not authenticated"])))
+            return
+        }
+        
+        // Make an authenticated API request to get user photos
+        let apiUrl = "https://api.flickr.com/services/rest/"
+        let method = "flickr.people.getPhotos"
+        let params: [String: Any] = [
+            "method": method,
+            "format": "json",
+            "nojsoncallback": "1",
+            "extras": "url_m", // Include the URL of the medium-sized photo
+            "user_id": credential?.userId ?? "" // User ID of the authenticated user
+        ]
+        
+        client.get(apiUrl, parameters: params) { result in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                    completion(.success(data))
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
 

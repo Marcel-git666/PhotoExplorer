@@ -30,6 +30,18 @@ struct ContentView: View {
                 } else if viewModel.authenticationState == .successfullyAuthenticated {
                     Text("Authenticated!")
                         .padding()
+                    Button("Get User Photos") {
+                        viewModel.getUserPhotos { result in
+                            switch result {
+                            case .success(let data):
+                                print("Success, we got data: \(data).count")
+                            case .failure(let error):
+                                // Handle error
+                                print("Failed to fetch user photos: \(error)")
+                            }
+                        }
+                    }
+                    .padding()
                     
                     Button("Logout") {
                         viewModel.logout()

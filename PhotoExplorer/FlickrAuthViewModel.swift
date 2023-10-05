@@ -19,7 +19,7 @@ class FlickrAuthViewModel: ObservableObject {
     
     init(flickrOAuthService: FlickrOAuthService) {
         self.flickrOAuthService = flickrOAuthService
-        
+        self.flickrOAuthService.oauthClient = flickrOAuthService.createOAuthClient(args: FlickrOAuthService.FlickrOAuthClientInput(consumerKey: FLICKR_CONSUMER_KEY, consumerSecret: FLICKR_CONSUMER_SECRET, accessToken: self.flickrOAuthService.credential?.accessToken ?? "", accessTokenSecret: self.flickrOAuthService.credential?.accessTokenSecret ?? ""))
         // Subscribe to authenticationState changes from FlickrOAuthService
         self.flickrOAuthService.objectWillChange.sink { [weak self] _ in
             self?.objectWillChange.send()
@@ -39,6 +39,11 @@ class FlickrAuthViewModel: ObservableObject {
         authenticationState = .successfullyAuthenticated
         isAuthenticationCompleted = true
     }
+    
+    func getUserPhotos(completion: @escaping (Result<Data, Error>) -> Void) {
+        flickrOAuthService.getUserPhotos(completion: completion)
+    }
+    
     
     func logout() {
         flickrOAuthService.logout()
