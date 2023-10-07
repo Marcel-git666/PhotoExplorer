@@ -26,6 +26,9 @@
 		1F19B4D62ACC994000D46FC1 /* FlickrAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D52ACC994000D46FC1 /* FlickrAuthViewModel.swift */; };
 		1F19B4D82ACC99F800D46FC1 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D72ACC99F800D46FC1 /* SafariView.swift */; };
 		1F208E202AD19DA00097B56A /* Prephirences in Frameworks */ = {isa = PBXBuildFile; productRef = 1F208E1F2AD19DA00097B56A /* Prephirences */; };
+		1F47DFFE2AD1DF5C001318B8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47DFFD2AD1DF5C001318B8 /* MapView.swift */; };
+		1F47E0002AD1DF80001318B8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47DFFF2AD1DF80001318B8 /* SettingsView.swift */; };
+		1F47E0022AD1E3E5001318B8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47E0012AD1E3E5001318B8 /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		1F19B4D32ACC8D2300D46FC1 /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 		1F19B4D52ACC994000D46FC1 /* FlickrAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAuthViewModel.swift; sourceTree = "<group>"; };
 		1F19B4D72ACC99F800D46FC1 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		1F47DFFD2AD1DF5C001318B8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1F47DFFF2AD1DF80001318B8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1F47E0012AD1E3E5001318B8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1F8877BE2ACDF8AF0058B962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,13 +129,14 @@
 				1F19B4972ACB281000D46FC1 /* PhotoExplorerApp.swift */,
 				1F19B4C32ACB372200D46FC1 /* Models */,
 				1F19B4C12ACB293A00D46FC1 /* Constants.swift */,
-				1F19B4992ACB281000D46FC1 /* ContentView.swift */,
+				1F47DFFC2AD1DF4C001318B8 /* Views */,
 				1F19B4D72ACC99F800D46FC1 /* SafariView.swift */,
 				1F19B49B2ACB281200D46FC1 /* Assets.xcassets */,
 				1F19B49D2ACB281200D46FC1 /* Preview Content */,
 				1F19B4CC2ACBE46F00D46FC1 /* NetworkManager.swift */,
 				1F19B4D12ACC68D400D46FC1 /* FlickrAuthService.swift */,
 				1F19B4D52ACC994000D46FC1 /* FlickrAuthViewModel.swift */,
+				1F47E0012AD1E3E5001318B8 /* MapViewModel.swift */,
 			);
 			path = PhotoExplorer;
 			sourceTree = "<group>";
@@ -169,6 +176,16 @@
 				1F19B4CA2ACB3B1E00D46FC1 /* Photo.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1F47DFFC2AD1DF4C001318B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F19B4992ACB281000D46FC1 /* ContentView.swift */,
+				1F47DFFD2AD1DF5C001318B8 /* MapView.swift */,
+				1F47DFFF2AD1DF80001318B8 /* SettingsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,11 +327,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F19B4CB2ACB3B1E00D46FC1 /* Photo.swift in Sources */,
+				1F47DFFE2AD1DF5C001318B8 /* MapView.swift in Sources */,
 				1F19B4C92ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift in Sources */,
 				1F19B4D62ACC994000D46FC1 /* FlickrAuthViewModel.swift in Sources */,
 				1F19B49A2ACB281000D46FC1 /* ContentView.swift in Sources */,
+				1F47E0022AD1E3E5001318B8 /* MapViewModel.swift in Sources */,
 				1F19B4D82ACC99F800D46FC1 /* SafariView.swift in Sources */,
 				1F19B4C52ACB373200D46FC1 /* FlickrAPI.swift in Sources */,
+				1F47E0002AD1DF80001318B8 /* SettingsView.swift in Sources */,
 				1F19B4D22ACC68D400D46FC1 /* FlickrAuthService.swift in Sources */,
 				1F19B4CD2ACBE46F00D46FC1 /* NetworkManager.swift in Sources */,
 				1F19B4982ACB281000D46FC1 /* PhotoExplorerApp.swift in Sources */,
