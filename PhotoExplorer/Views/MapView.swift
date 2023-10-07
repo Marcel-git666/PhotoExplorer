@@ -9,52 +9,80 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
-
-import SwiftUI
-import MapKit
-
-import SwiftUI
-import MapKit
-
-import SwiftUI
-import MapKit
-
 struct MapView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
     @ObservedObject var mapViewModel = MapViewModel()
     @EnvironmentObject var locationManager: LocationManager // Access LocationManager
+    
+    @State private var region: MKCoordinateRegion
 
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), // Default to San Francisco
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
+    init() {
+        // Default to San Francisco
+        let defaultLocation = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
+        
+        _region = State(initialValue: MKCoordinateRegion(center: defaultLocation, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)))
+    }
 
     var body: some View {
-        Map(
-            coordinateRegion: $region,
-            interactionModes: .all,
-            showsUserLocation: true
-        )
+        CustomMapView(initialRegion: $region, onMapTap: { coordinate in
+            // Handle tap on map
+            mapViewModel.handleTapOnMap(at: coordinate)
+        })
         .onAppear {
-            // Wait for a brief moment before centering the map on the user's location
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                if let userLocation = locationManager.lastKnownLocation?.coordinate {
-                    region.center = userLocation
-                }
+            if let userLocation = locationManager.lastKnownLocation?.coordinate {
+                region.center = userLocation
             }
-
-            // Start location updates
-            mapViewModel.startLocationUpdates()
+        }
+        .onReceive(locationManager.$lastKnownLocation) { newLocation in
+            guard let newLocation = newLocation?.coordinate else { return }
+            region.center = newLocation
         }
     }
 }
 
 
+struct CustomMapView: UIViewRepresentable {
+    @Binding var initialRegion: MKCoordinateRegion
+    var onMapTap: (CLLocationCoordinate2D) -> Void
+
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.mapTapped(_:)))
+        mapView.addGestureRecognizer(tap)
+        return mapView
+    }
+
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        if !context.coordinator.didSetInitialRegion {
+            DispatchQueue.main.async {
+                uiView.setRegion(self.initialRegion, animated: true)
+                context.coordinator.didSetInitialRegion = true
+            }
+        }
+    }
 
 
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
 
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var parent: CustomMapView
+        var didSetInitialRegion = false
 
+        init(_ parent: CustomMapView) {
+            self.parent = parent
+        }
 
+        @objc func mapTapped(_ gesture: UITapGestureRecognizer) {
+            let mapView = gesture.view as! MKMapView
+            let point = gesture.location(in: mapView)
+            let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+            parent.onMapTap(coordinate)
+        }
+    }
+}
 
 
 
