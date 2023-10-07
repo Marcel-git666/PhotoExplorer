@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import Combine
 
 class FlickrAuthViewModel: ObservableObject {
     @Published var oauthService = FlickrOAuthService()
     @Published var isAuthenticated: Bool = false
+    @Published var showSheet: Bool = false
+    private var cancellables: Set<AnyCancellable> = []
 
     init() {
         // Initialize your OAuth service and check if the user is already authenticated
         checkAuthentication()
+        oauthService.$showSheet
+                    .sink(receiveValue: { [weak self] show in
+                        self?.showSheet = show
+                    })
+                    .store(in: &cancellables)
     }
 
     func checkAuthentication() {

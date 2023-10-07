@@ -9,31 +9,49 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
-    @State private var showSafariView = false
-
+    @State private var showSafari = false
+    // Create a computed property for the custom binding
+    private var debugShowSheetBinding: Binding<Bool> {
+        Binding(
+            get: {
+                print("Reading showSheet: \(self.viewModel.oauthService.showSheet)")
+                return self.viewModel.oauthService.showSheet
+            },
+            set: {
+                print("Setting showSheet to \($0)")
+                self.viewModel.oauthService.showSheet = $0
+            }
+        )
+    }
+    
     var body: some View {
         VStack {
+            Button("Open Safari") {
+                showSafari = true
+            }
+            .sheet(isPresented: $showSafari) {
+                SafariView(url: URL(string: "https://www.google.com")!)
+            }
+            
             if viewModel.isAuthenticated {
-                Text("User is authenticated!")
-                Button("Logout") {
-                    viewModel.logout()
-                }
+                // Authenticated UI
             } else {
                 Button("Authenticate") {
-                    showSafariView = true
-                    viewModel.authenticate()
+                    DispatchQueue.main.async {
+                        viewModel.authenticate()
+                    }
                 }
             }
         }
         .padding()
-        .sheet(isPresented: $showSafariView) {
+        .sheet(isPresented: debugShowSheetBinding) {
             if let authUrl = viewModel.oauthService.authUrl {
                 SafariView(url: authUrl)
                     .edgesIgnoringSafeArea(.all)
-            } else {
-                Text("Loading...")
-                    .onAppear {
-                        viewModel.authenticate() // Retry authentication if authUrl is nil
+                    .onDisappear {
+                        DispatchQueue.main.async {
+                            viewModel.oauthService.showSheet = false
+                        }
                     }
             }
         }

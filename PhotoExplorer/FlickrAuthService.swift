@@ -30,7 +30,9 @@ class FlickrOAuthService: NSObject, ObservableObject {
     }
     
     @Published var showSheet: Bool = false {
-        willSet { self.objectWillChange.send(self) }
+        willSet { 
+            print("ShowSheet is changeing ... \(showSheet.description)")
+            self.objectWillChange.send(self) }
     }
     
     @Published var oauthClient: OAuthSwiftClient?
@@ -231,8 +233,10 @@ class FlickrOAuthService: NSObject, ObservableObject {
         
         // Continue with authorization if no saved credentials were found
         
-        self.showSheet = true // opens the sheet containing our safari view
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.showSheet = true
+        } // opens the sheet containing our safari view
+        print("showSheet set to true")
         // Start Step 1: Requesting an access token
         let oAuthTokenInput = RequestOAuthTokenInput(consumerKey: FLICKR_CONSUMER_KEY,
                                                      consumerSecret: FLICKR_CONSUMER_SECRET,
@@ -242,6 +246,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
             self.callbackObserver = NotificationCenter.default.addObserver(forName: .flickrCallback, object: nil, queue: .main) { notification in
                 self.callbackObserver = nil // remove notification observer
                 self.showSheet = false      // hide sheet containing safari view
+                print("showSheet set to false")
                 self.authUrl = nil          // remove safari view
                 guard let url = notification.object as? URL else { return }
                 guard let parameters = url.query?.urlQueryStringParameters else { return }
@@ -282,6 +287,8 @@ class FlickrOAuthService: NSObject, ObservableObject {
             // Start Step 2: User Flickr Login
             let urlString = "\(FlickrAPI.authorizeURL)?oauth_token=\(oAuthTokenResponse.oauthToken)&perms=write"
             guard let oauthUrl = URL(string: urlString) else { return }
+            print("Attempting to open URL: \(oauthUrl)")
+
             DispatchQueue.main.async {
                 self.authUrl = oauthUrl // sets our safari view url
             }
