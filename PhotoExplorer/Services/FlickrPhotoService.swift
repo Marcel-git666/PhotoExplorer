@@ -13,7 +13,7 @@ enum NetworkError: Error {
     case invalidURL
 }
 
-class NetworkManager: ObservableObject {
+class FlickrPhotoService: ObservableObject {
     func getPhotos() async throws -> [Photo] {
         let endpoint = FlickrAPI.baseURLString + "/?method" + Endpoint.forLocationPhotos.rawValue + "api_key=" + FlickrAPI.apiKey
         guard let url = URL(string: endpoint) else {

@@ -12,7 +12,7 @@ import CoreLocation
 struct MapView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
     @ObservedObject var mapViewModel = MapViewModel()
-    @EnvironmentObject var locationManager: LocationManager // Access LocationManager
+    @EnvironmentObject var locationManager: LocationService // Access LocationManager
     
     @State private var region: MKCoordinateRegion
 
@@ -85,27 +85,3 @@ struct CustomMapView: UIViewRepresentable {
 }
 
 
-
-
-
-struct Location: Identifiable {
-    let id: UUID
-    let coordinate: CLLocationCoordinate2D
-}
-
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private var innerLocationManager = CLLocationManager()
-    
-    @Published var lastKnownLocation: CLLocation?
-    
-    override init() {
-        super.init()
-        self.innerLocationManager.delegate = self
-        self.innerLocationManager.requestWhenInUseAuthorization()
-        self.innerLocationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lastKnownLocation = locations.last
-    }
-}

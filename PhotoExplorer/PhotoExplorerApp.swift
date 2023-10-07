@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct PhotoExplorerApp: App {
     @StateObject private var flickrAuthViewModel = FlickrAuthViewModel()
-    @StateObject private var locationManager = LocationManager()
+    @StateObject private var locationManager = LocationService()
 
     var body: some Scene {
         WindowGroup {

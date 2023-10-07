@@ -9,33 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
+    @ObservedObject var mapViewModel = MapViewModel()
+    
     @State private var selectedTab: Int = 0  // 0 for main view, 1 for settings
     
     var body: some View {
-            TabView(selection: $selectedTab) {
-                // Main View Tab
-                MapView()
-                    .tabItem {
-                        Image(systemName: "photo")
-                        Text("Explore")
-                    }.tag(0)
-
-                // Settings Tab
-                SettingsView()
-                    .tabItem {
-                        Image(systemName: "gearshape")
-                        Text("Settings")
-                    }.tag(1)
-            }
+        TabView(selection: $selectedTab) {
+            MapView()
+                .tabItem {
+                    Image(systemName: "photo")
+                    Text("Explore")
+                }.tag(0)
+            PhotosView(mapViewModel: mapViewModel)
+                .tabItem {
+                    Image(systemName: "mappin.circle")
+                    Text("Coordinate")
+                }.tag(1)
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("Settings")
+                }.tag(2)
+        }
         .sheet(isPresented: $viewModel.showSheet) {
-                    if let authUrl = viewModel.oauthService.authUrl {
-                        SafariView(url: authUrl)
-                            .edgesIgnoringSafeArea(.all)
-                            .onDisappear {
-                                viewModel.showSheet = false
-                            }
+            if let authUrl = viewModel.oauthService.authUrl {
+                SafariView(url: authUrl)
+                    .edgesIgnoringSafeArea(.all)
+                    .onDisappear {
+                        viewModel.showSheet = false
                     }
-                }
+            }
+        }
     }
 }
 
