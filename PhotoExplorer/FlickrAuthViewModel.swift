@@ -22,6 +22,11 @@ class FlickrAuthViewModel: ObservableObject {
                         self?.showSheet = show
                     })
                     .store(in: &cancellables)
+        oauthService.$authenticationState
+                            .sink(receiveValue: { [weak self] state in
+                                self?.isAuthenticated = (state == .successfullyAuthenticated)
+                            })
+                            .store(in: &cancellables)
     }
 
     func checkAuthentication() {

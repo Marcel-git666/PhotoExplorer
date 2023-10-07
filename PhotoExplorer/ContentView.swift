@@ -9,52 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
-    @State private var showSafari = false
-    // Create a computed property for the custom binding
-    private var debugShowSheetBinding: Binding<Bool> {
-        Binding(
-            get: {
-                print("Reading showSheet: \(self.viewModel.oauthService.showSheet)")
-                return self.viewModel.oauthService.showSheet
-            },
-            set: {
-                print("Setting showSheet to \($0)")
-                self.viewModel.oauthService.showSheet = $0
-            }
-        )
-    }
+    @State private var selectedTab: Int = 0  // 0 for main view, 1 for settings
     
     var body: some View {
-        VStack {
-            Button("Open Safari") {
-                showSafari = true
-            }
-            .sheet(isPresented: $showSafari) {
-                SafariView(url: URL(string: "https://www.google.com")!)
-            }
+        TabView(selection: $selectedTab) {
+            // Main View Tab
+            Text("PhotoExplorer")
+                .tabItem {
+                    Image(systemName: "photo")
+                    Text("Explore")
+                }.tag(0)
             
-            if viewModel.isAuthenticated {
-                // Authenticated UI
-            } else {
-                Button("Authenticate") {
-                    DispatchQueue.main.async {
+            // Settings Tab
+            VStack(spacing: 20) {
+                Text("Authentication State: \(viewModel.isAuthenticated ? "Authenticated" : "Not Authenticated")")
+                
+                if viewModel.isAuthenticated {
+                    Button("Logout") {
+                        viewModel.logout()
+                    }
+                } else {
+                    Button("Authenticate") {
                         viewModel.authenticate()
                     }
                 }
             }
+            .padding()
+            .tabItem {
+                Image(systemName: "gearshape")
+                Text("Settings")
+            }.tag(1)
         }
-        .padding()
-        .sheet(isPresented: debugShowSheetBinding) {
-            if let authUrl = viewModel.oauthService.authUrl {
-                SafariView(url: authUrl)
-                    .edgesIgnoringSafeArea(.all)
-                    .onDisappear {
-                        DispatchQueue.main.async {
-                            viewModel.oauthService.showSheet = false
-                        }
+        .sheet(isPresented: $viewModel.showSheet) {
+                    if let authUrl = viewModel.oauthService.authUrl {
+                        SafariView(url: authUrl)
+                            .edgesIgnoringSafeArea(.all)
+                            .onDisappear {
+                                viewModel.showSheet = false
+                            }
                     }
-            }
-        }
+                }
     }
 }
 

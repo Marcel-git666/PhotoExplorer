@@ -14,58 +14,10 @@
             filePath = "PhotoExplorer/FlickrAuthViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "logout()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C76F31CD-DC07-4454-A5BC-0865163DB090"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoExplorer/FlickrAuthService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "authorize()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C76F31CD-DC07-4454-A5BC-0865163DB090 - 40cc848d30fc7213"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Foundation.Notification) -&gt; () in closure #1 (PhotoExplorer.FlickrOAuthService.RequestOAuthTokenResponse) -&gt; () in PhotoExplorer.FlickrOAuthService.authorize() -&gt; ()"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/FlickrAuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "248"
-                  endingLineNumber = "248"
-                  offsetFromSymbolStart = "726">
-               </Location>
-               <Location
-                  uuid = "C76F31CD-DC07-4454-A5BC-0865163DB090 - 40cc848d30fc7213"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Foundation.Notification) -&gt; () in closure #2 (PhotoExplorer.FlickrOAuthService.RequestOAuthTokenResponse) -&gt; () in PhotoExplorer.FlickrOAuthService.authorize() -&gt; ()"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/FlickrAuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "248"
-                  endingLineNumber = "248"
-                  offsetFromSymbolStart = "459">
-               </Location>
-            </Locations>
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "FlickrAuthViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
