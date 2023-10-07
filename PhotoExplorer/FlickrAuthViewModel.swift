@@ -28,6 +28,12 @@ class FlickrAuthViewModel: ObservableObject {
     func authenticate() {
         // Start the authentication process
         oauthService.authorize()
+
+        // Handle the UI state based on authenticationState
+        if oauthService.authenticationState != .successfullyAuthenticated {
+            // Show the SafariView if authentication is needed
+            oauthService.showSheet = true
+        }
     }
 
     func logout() {

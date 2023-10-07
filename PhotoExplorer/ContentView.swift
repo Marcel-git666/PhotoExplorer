@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
     @State private var showSafariView = false
-    
+
     var body: some View {
         VStack {
             if viewModel.isAuthenticated {
@@ -21,16 +21,25 @@ struct ContentView: View {
             } else {
                 Button("Authenticate") {
                     showSafariView = true
+                    viewModel.authenticate()
                 }
             }
         }
         .padding()
-        .sheet(isPresented: $viewModel.oauthService.showSheet) {
-                    SafariView(url: viewModel.oauthService.authUrl!)
-                        .edgesIgnoringSafeArea(.all)
-                }
+        .sheet(isPresented: $showSafariView) {
+            if let authUrl = viewModel.oauthService.authUrl {
+                SafariView(url: authUrl)
+                    .edgesIgnoringSafeArea(.all)
+            } else {
+                Text("Loading...")
+                    .onAppear {
+                        viewModel.authenticate() // Retry authentication if authUrl is nil
+                    }
+            }
+        }
     }
 }
+
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
