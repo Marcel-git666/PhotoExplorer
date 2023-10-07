@@ -25,6 +25,7 @@
 		1F19B4D42ACC8D2300D46FC1 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D32ACC8D2300D46FC1 /* AuthenticationState.swift */; };
 		1F19B4D62ACC994000D46FC1 /* FlickrAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D52ACC994000D46FC1 /* FlickrAuthViewModel.swift */; };
 		1F19B4D82ACC99F800D46FC1 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19B4D72ACC99F800D46FC1 /* SafariView.swift */; };
+		1F208E202AD19DA00097B56A /* Prephirences in Frameworks */ = {isa = PBXBuildFile; productRef = 1F208E1F2AD19DA00097B56A /* Prephirences */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F208E202AD19DA00097B56A /* Prephirences in Frameworks */,
 				1F19B4D02ACC077500D46FC1 /* OAuthSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +189,7 @@
 			name = PhotoExplorer;
 			packageProductDependencies = (
 				1F19B4CF2ACC077500D46FC1 /* OAuthSwift */,
+				1F208E1F2AD19DA00097B56A /* Prephirences */,
 			);
 			productName = PhotoExplorer;
 			productReference = 1F19B4942ACB281000D46FC1 /* PhotoExplorer.app */;
@@ -262,6 +265,7 @@
 			mainGroup = 1F19B48B2ACB281000D46FC1;
 			packageReferences = (
 				1F19B4CE2ACC077500D46FC1 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				1F208E1E2AD19DA00097B56A /* XCRemoteSwiftPackageReference "Prephirences" */,
 			);
 			productRefGroup = 1F19B4952ACB281000D46FC1 /* Products */;
 			projectDirPath = "";
@@ -660,6 +664,14 @@
 				minimumVersion = 2.2.0;
 			};
 		};
+		1F208E1E2AD19DA00097B56A /* XCRemoteSwiftPackageReference "Prephirences" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/phimage/Prephirences";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -667,6 +679,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1F19B4CE2ACC077500D46FC1 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
 			productName = OAuthSwift;
+		};
+		1F208E1F2AD19DA00097B56A /* Prephirences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F208E1E2AD19DA00097B56A /* XCRemoteSwiftPackageReference "Prephirences" */;
+			productName = Prephirences;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

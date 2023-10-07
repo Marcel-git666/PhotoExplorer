@@ -137,6 +137,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
             let result = RequestOAuthTokenResponse(oauthToken: attributes["oauth_token"] ?? "",
                                                    oauthTokenSecret: attributes["oauth_token_secret"] ?? "",
                                                    oauthCallbackConfirmed: attributes["oauth_callback_confirmed"] ?? "")
+            print("Result after request oauth token is: \(result)")
             complete(result)
         }
         task.resume()
@@ -257,6 +258,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
                                                                requestToken: oAuthTokenResponse.oauthToken,
                                                                requestTokenSecret: oAuthTokenResponse.oauthTokenSecret,
                                                                oauthVerifier: verifier)
+                print("Process completed succesfully")
                 self.requestAccessToken(args: accessTokenInput) { accessTokenResponse in
                     // Process Completed Successfully!
                     DispatchQueue.main.async {

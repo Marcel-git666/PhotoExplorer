@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
+    @State private var showSafariView = false
     
     var body: some View {
         VStack {
@@ -19,11 +20,15 @@ struct ContentView: View {
                 }
             } else {
                 Button("Authenticate") {
-                    viewModel.authenticate()
+                    showSafariView = true
                 }
             }
         }
         .padding()
+        .sheet(isPresented: $viewModel.oauthService.showSheet) {
+                    SafariView(url: viewModel.oauthService.authUrl!)
+                        .edgesIgnoringSafeArea(.all)
+                }
     }
 }
 
