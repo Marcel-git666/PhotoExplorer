@@ -34,6 +34,7 @@
 		1F9FE7DE2AD21226009E4580 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7DD2AD21226009E4580 /* Location.swift */; };
 		1F9FE7E02AD21290009E4580 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7DF2AD21290009E4580 /* LocationService.swift */; };
 		1F9FE7E52AD2938E009E4580 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7E42AD2938E009E4580 /* Extensions.swift */; };
+		1F9FE7E72AD2CD9A009E4580 /* FlickrSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7E62AD2CD9A009E4580 /* FlickrSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		1F9FE7DD2AD21226009E4580 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		1F9FE7DF2AD21290009E4580 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1F9FE7E42AD2938E009E4580 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1F9FE7E62AD2CD9A009E4580 /* FlickrSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				1F19B4C82ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift */,
 				1F19B4CA2ACB3B1E00D46FC1 /* Photo.swift */,
 				1F9FE7DD2AD21226009E4580 /* Location.swift */,
+				1F9FE7E62AD2CD9A009E4580 /* FlickrSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				1F47DFFE2AD1DF5C001318B8 /* MapView.swift in Sources */,
 				1F19B4C92ACB3AAF00D46FC1 /* FlickrPhotosResponse.swift in Sources */,
 				1F9FE7DA2AD20C8E009E4580 /* PhotosView.swift in Sources */,
+				1F9FE7E72AD2CD9A009E4580 /* FlickrSettings.swift in Sources */,
 				1F9FE7DE2AD21226009E4580 /* Location.swift in Sources */,
 				1F19B4D62ACC994000D46FC1 /* FlickrAuthViewModel.swift in Sources */,
 				1F9FE7E02AD21290009E4580 /* LocationService.swift in Sources */,

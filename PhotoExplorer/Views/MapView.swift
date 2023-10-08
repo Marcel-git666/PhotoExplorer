@@ -24,7 +24,7 @@ struct MapView: View {
     }
 
     var body: some View {
-        CustomMapView(initialRegion: $region, onMapTap: { coordinate in
+        CustomMapView(initialRegion: $region, currentAnnotation: $mapViewModel.currentAnnotation, onMapTap: { coordinate in
             // Handle tap on map
             mapViewModel.handleTapOnMap(at: coordinate)
         })
@@ -42,7 +42,9 @@ struct MapView: View {
 
 
 struct CustomMapView: UIViewRepresentable {
+    @EnvironmentObject var mapViewModel: MapViewModel
     @Binding var initialRegion: MKCoordinateRegion
+    @Binding var currentAnnotation: MKPointAnnotation?
     var onMapTap: (CLLocationCoordinate2D) -> Void
 
     func makeUIView(context: Context) -> MKMapView {
@@ -60,7 +62,15 @@ struct CustomMapView: UIViewRepresentable {
                 context.coordinator.didSetInitialRegion = true
             }
         }
+
+        // Add the annotation
+        if let annotation = currentAnnotation {
+            uiView.removeAnnotations(uiView.annotations) // Remove existing annotations
+            uiView.addAnnotation(annotation)
+            uiView.setCenter(annotation.coordinate, animated: true)
+        }
     }
+
 
 
     func makeCoordinator() -> Coordinator {

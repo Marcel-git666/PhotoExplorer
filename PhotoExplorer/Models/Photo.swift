@@ -53,7 +53,7 @@ struct Photo: Codable, Identifiable {
                 print(urlString) // Check this in the console
             default:
                 urlString = "https://live.staticflickr.com/\(server)/\(id)_\(secret)_\(size.rawValue).jpg"
-                print("Default urlstring: \(urlString)") // Check this in the console
+//                print("Default urlstring: \(urlString)") // Check this in the console
             }
             return URL(string: urlString)
         }

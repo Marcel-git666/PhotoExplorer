@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
-    
     @State private var selectedTab: Int = 0  // 0 for main view, 1 for settings
     
     var body: some View {

@@ -11,6 +11,7 @@ import MapKit
 struct PhotosView: View {
     @EnvironmentObject var mapViewModel: MapViewModel
     @ObservedObject var photosViewModel = PhotosViewModel()
+    @EnvironmentObject var flickrSettings: FlickrSettings
 
     var body: some View {
         NavigationView {
@@ -43,7 +44,7 @@ struct PhotosView: View {
         .padding()
         .onReceive(mapViewModel.$lastTappedCoordinate) { newCoordinate in
             if let newCoordinate = newCoordinate {
-                photosViewModel.fetchPhotos(for: newCoordinate)
+                photosViewModel.fetchPhotos(for: newCoordinate, endpoint: flickrSettings.selectedEndpoint, accuracyValue: flickrSettings.accuracy)
             }
         }
     }

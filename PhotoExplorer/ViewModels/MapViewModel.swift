@@ -17,6 +17,8 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var selectedLocation: Location?
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var lastTappedCoordinate: CLLocationCoordinate2D?
+    @Published var currentAnnotation: MKPointAnnotation?
+
     
     override init() {
         super.init()
@@ -34,6 +36,12 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         // Handle the tap on the map
         selectedLocation = Location(id: UUID(), coordinate: coordinate)
         lastTappedCoordinate = coordinate
+
+        // Create a new annotation and set it
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        currentAnnotation = annotation
+
         print("User has tapped on coordinates: \(lastTappedCoordinate.debugDescription).")
     }
     

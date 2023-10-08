@@ -12,6 +12,7 @@ struct PhotoExplorerApp: App {
     @StateObject private var flickrAuthViewModel = FlickrAuthViewModel()
     @StateObject private var locationManager = LocationService()
     @StateObject private var mapViewModel = MapViewModel()
+    @StateObject private var flickrSettings = FlickrSettings()
 
     var body: some Scene {
         WindowGroup {
@@ -19,6 +20,7 @@ struct PhotoExplorerApp: App {
                 .environmentObject(flickrAuthViewModel)
                 .environmentObject(locationManager)
                 .environmentObject(mapViewModel)
+                .environmentObject(flickrSettings)
                 .onOpenURL { url in
                             // Check if the URL scheme matches your app's URL scheme
                             if url.scheme == FLICKR_URL_SCHEME {
