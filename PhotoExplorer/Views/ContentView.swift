@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
-    @ObservedObject var mapViewModel = MapViewModel()
+//    @EnvironmentObject var mapViewModel: MapViewModel
     
     @State private var selectedTab: Int = 0  // 0 for main view, 1 for settings
     
@@ -20,7 +20,7 @@ struct ContentView: View {
                     Image(systemName: "photo")
                     Text("Explore")
                 }.tag(0)
-            PhotosView(mapViewModel: mapViewModel)
+            PhotosView()
                 .tabItem {
                     Image(systemName: "mappin.circle")
                     Text("Coordinate")
@@ -47,7 +47,10 @@ struct ContentView: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(FlickrAuthViewModel()) // Initialize the viewModel
+        
+        
+        ContentView().environmentObject(FlickrAuthViewModel())
+            .environmentObject(MapViewModel())
     }
 }
 #endif

@@ -11,7 +11,7 @@ import CoreLocation
 
 struct MapView: View {
     @EnvironmentObject var viewModel: FlickrAuthViewModel
-    @ObservedObject var mapViewModel = MapViewModel()
+    @EnvironmentObject var mapViewModel: MapViewModel
     @EnvironmentObject var locationManager: LocationService // Access LocationManager
     
     @State private var region: MKCoordinateRegion
@@ -83,5 +83,4 @@ struct CustomMapView: UIViewRepresentable {
         }
     }
 }
-
 

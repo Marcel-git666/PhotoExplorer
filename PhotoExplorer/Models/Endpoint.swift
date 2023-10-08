@@ -6,6 +6,7 @@
 //
 
 enum Endpoint: String {
+    case search = "flickr.photos.search"
     case forLocationPhotos = "flickr.photos.geo.photosForLocation"
 }
 

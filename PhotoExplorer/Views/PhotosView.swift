@@ -6,35 +6,33 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PhotosView: View {
-    @ObservedObject var mapViewModel: MapViewModel
-    // Assume you have some method to fetch photos based on coordinates.
+    @EnvironmentObject var mapViewModel: MapViewModel
     @ObservedObject var photosViewModel = PhotosViewModel()
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Photos at Tapped Coordinate")
-
-            if let coordinate = mapViewModel.lastTappedCoordinate {
-                Text("Latitude: \(coordinate.latitude)")
-                Text("Longitude: \(coordinate.longitude)")
-
-//                List(photosViewModel.photos, id: \.id) { photo in
-//                    // Display each photo in a row.
-//                    // You'll likely have a photo view model or similar to handle this.
-//                    Image(uiImage: photo.image)
-//                        .resizable()
-//                        .scaledToFit()
-//                }
-            } else {
-                Text("Tap on the map to get coordinates and see photos")
+        NavigationView {
+            VStack(spacing: 20) {
+                Text("Tapped Coordinate")
+                if let coordinate = mapViewModel.lastTappedCoordinate {
+                    Text("Latitude: \(coordinate.latitude, specifier: "%.4f")")
+                    Text("Longitude: \(coordinate.longitude, specifier: "%.4f")")
+                    Text(photosViewModel.errorMessage ?? "No error")
+                    List(photosViewModel.photos, id: \.id) { photo in
+                        Text(photo.title)
+                    }
+                } else {
+                    Text("Tap on the map to get coordinates")
+                }
             }
         }
         .padding()
         .onReceive(mapViewModel.$lastTappedCoordinate) { newCoordinate in
-            guard let newCoordinate = newCoordinate else { return }
-            photosViewModel.fetchPhotos(at: newCoordinate)
+            if let newCoordinate = newCoordinate {
+                photosViewModel.fetchPhotos(for: newCoordinate)
+            }
         }
     }
 }

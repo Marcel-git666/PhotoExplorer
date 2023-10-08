@@ -7,13 +7,30 @@
 
 import Foundation
 import MapKit
+import Prephirences
 
 class PhotosViewModel: ObservableObject {
-    @Published var photos: [Photo] = []
+    private var photoService = FlickrPhotoService()
 
-    func fetchPhotos(at coordinate: CLLocationCoordinate2D) {
-        // Logic to fetch photos based on the coordinate.
-        // Update the photos array with fetched photos.
+    @Published var photos: [Photo] = []
+    @Published var errorMessage: String?
+
+    func fetchPhotos(for coordinate: CLLocationCoordinate2D) {
+        Task {
+            do {
+                let fetchedPhotos = try await photoService.getPhotos(for: coordinate)
+                
+                // Dispatch UI updates to the main thread
+                DispatchQueue.main.async {
+                    self.photos = fetchedPhotos
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.errorMessage = "An error occurred."
+                }
+            }
+        }
     }
 }
+
 

@@ -33,6 +33,7 @@
 		1F9FE7DC2AD20D3E009E4580 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7DB2AD20D3E009E4580 /* PhotosViewModel.swift */; };
 		1F9FE7DE2AD21226009E4580 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7DD2AD21226009E4580 /* Location.swift */; };
 		1F9FE7E02AD21290009E4580 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7DF2AD21290009E4580 /* LocationService.swift */; };
+		1F9FE7E52AD2938E009E4580 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FE7E42AD2938E009E4580 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		1F9FE7DB2AD20D3E009E4580 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		1F9FE7DD2AD21226009E4580 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		1F9FE7DF2AD21290009E4580 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		1F9FE7E42AD2938E009E4580 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				1F19B4C12ACB293A00D46FC1 /* Constants.swift */,
+				1F9FE7E42AD2938E009E4580 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				1F47E0002AD1DF80001318B8 /* SettingsView.swift in Sources */,
 				1F19B4D22ACC68D400D46FC1 /* FlickrAuthService.swift in Sources */,
 				1F19B4CD2ACBE46F00D46FC1 /* FlickrPhotoService.swift in Sources */,
+				1F9FE7E52AD2938E009E4580 /* Extensions.swift in Sources */,
 				1F19B4982ACB281000D46FC1 /* PhotoExplorerApp.swift in Sources */,
 				1F19B4C22ACB293A00D46FC1 /* Constants.swift in Sources */,
 				1F19B4C72ACB37A000D46FC1 /* Endpoint.swift in Sources */,

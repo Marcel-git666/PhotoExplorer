@@ -13,6 +13,7 @@ class FlickrAuthViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = false
     @Published var showSheet: Bool = false
     private var cancellables: Set<AnyCancellable> = []
+    @Published var photos: [Photo] = []
 
     init() {
         // Initialize your OAuth service and check if the user is already authenticated

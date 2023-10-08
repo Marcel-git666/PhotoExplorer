@@ -305,6 +305,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
         
         self.authenticationState = .noAuthenticationAttempted
     }
+    
 }
 
 

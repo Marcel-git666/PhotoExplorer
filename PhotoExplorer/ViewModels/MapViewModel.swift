@@ -34,6 +34,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         // Handle the tap on the map
         selectedLocation = Location(id: UUID(), coordinate: coordinate)
         lastTappedCoordinate = coordinate
+        print("User has tapped on coordinates: \(lastTappedCoordinate.debugDescription).")
     }
     
     

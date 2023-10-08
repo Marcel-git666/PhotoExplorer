@@ -8,9 +8,15 @@
 import Foundation
 
 struct FlickrPhotosResponse: Codable {
-    let photos: [Photo]
-    
-    enum CodingKeys: String, CodingKey {
-        case photos = "photo"
-    }
+    let photos: PhotosContainer
 }
+
+struct PhotosContainer: Codable {
+    let page: Int
+    let pages: Int
+    let perpage: Int
+    let total: Int
+    let photo: [Photo]
+}
+
+
