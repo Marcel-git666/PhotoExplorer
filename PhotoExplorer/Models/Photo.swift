@@ -12,6 +12,7 @@ struct Photo: Codable, Identifiable {
     let owner: String
     let server: String
     let title: String
+    let secret: String
     let isPublic: Int
     let isFriend: Int
     let isFamily: Int
@@ -21,6 +22,7 @@ struct Photo: Codable, Identifiable {
         case owner
         case server
         case title
+        case secret
         case isPublic = "ispublic"
         case isFriend = "isfriend"
         case isFamily = "isfamily"
@@ -42,15 +44,19 @@ struct Photo: Codable, Identifiable {
             // ... add other sizes as needed
         }
 
-        func imageURL(for size: SizeSuffix) -> URL? {
+        func imageURL(for size: SizeSuffix = .medium800) -> URL? {
             let urlString: String
             switch size {
             case .original:
                 // You'd need the original secret and format for this, which aren't provided in your current model
-                urlString = "https://live.staticflickr.com/\(server)/\(id)_\(FlickrAPI.secretKey)_o.jpg"
+                urlString = "https://live.staticflickr.com/\(server)/\(id)_\(secret)_o.jpg"
+                print(urlString) // Check this in the console
             default:
-                urlString = "https://live.staticflickr.com/\(server)/\(id)_\(FlickrAPI.secretKey)_\(size.rawValue).jpg"
+                urlString = "https://live.staticflickr.com/\(server)/\(id)_\(secret)_\(size.rawValue).jpg"
+                print("Default urlstring: \(urlString)") // Check this in the console
             }
             return URL(string: urlString)
         }
 }
+
+

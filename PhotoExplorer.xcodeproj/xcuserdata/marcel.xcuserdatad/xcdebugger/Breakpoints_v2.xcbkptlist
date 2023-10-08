@@ -30,103 +30,10 @@
             filePath = "PhotoExplorer/Views/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "body"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "04F8874A-A316-46DA-AD5F-E39619E611FE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoExplorer/Services/FlickrPhotoService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "getPhotos(for:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "04F8874A-A316-46DA-AD5F-E39619E611FE - adb3438b5fe8c2ea"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhotoExplorer.FlickrPhotoService.getPhotos(for: __C.CLLocationCoordinate2D) async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/Services/FlickrPhotoService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "299">
-               </Location>
-               <Location
-                  uuid = "04F8874A-A316-46DA-AD5F-E39619E611FE - 5aa5eaa32d7fa38"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for PhotoExplorer.FlickrPhotoService.getPhotos(for: __C.CLLocationCoordinate2D) async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/Services/FlickrPhotoService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "200">
-               </Location>
-               <Location
-                  uuid = "04F8874A-A316-46DA-AD5F-E39619E611FE - adb3438b5fe8c2ea"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PhotoExplorer.FlickrPhotoService.getPhotos(for: __C.CLLocationCoordinate2D) async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/Services/FlickrPhotoService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "312">
-               </Location>
-               <Location
-                  uuid = "04F8874A-A316-46DA-AD5F-E39619E611FE - 5aa5eaa32d7fa38"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for PhotoExplorer.FlickrPhotoService.getPhotos(for: __C.CLLocationCoordinate2D) async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/Services/FlickrPhotoService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "223">
-               </Location>
-               <Location
-                  uuid = "04F8874A-A316-46DA-AD5F-E39619E611FE - 5aa5eaa32d7fa38"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for PhotoExplorer.FlickrPhotoService.getPhotos(for: __C.CLLocationCoordinate2D) async throws -&gt; Swift.Array&lt;PhotoExplorer.Photo&gt;"
-                  moduleName = "PhotoExplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcel/Library/Mobile%20Documents/com~apple~CloudDocs/Programming/PhotoExplorer/PhotoExplorer/Services/FlickrPhotoService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "228">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

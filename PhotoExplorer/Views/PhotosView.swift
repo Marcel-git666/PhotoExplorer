@@ -20,9 +20,21 @@ struct PhotosView: View {
                     Text("Latitude: \(coordinate.latitude, specifier: "%.4f")")
                     Text("Longitude: \(coordinate.longitude, specifier: "%.4f")")
                     Text(photosViewModel.errorMessage ?? "No error")
-                    List(photosViewModel.photos, id: \.id) { photo in
-                        Text(photo.title)
+                    
+                    // Display Photos
+                    TabView {
+                        ForEach(photosViewModel.photos, id: \.id) { photo in
+                            if let imageUrl = photo.imageURL() {
+                                AsyncImage(url: imageUrl) { image in
+                                    image.resizable().scaledToFit()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                            }
+                        }
                     }
+                    .tabViewStyle(PageTabViewStyle())
+                    .frame(height: 400) // Adjust this as needed
                 } else {
                     Text("Tap on the map to get coordinates")
                 }
