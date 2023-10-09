@@ -285,7 +285,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
             }
             
             // Start Step 2: User Flickr Login
-            let urlString = "\(FlickrAPI.authorizeURL)?oauth_token=\(oAuthTokenResponse.oauthToken)&perms=read"
+            let urlString = "\(FlickrAPI.authorizeURL)?oauth_token=\(oAuthTokenResponse.oauthToken)&perms=write"
             guard let oauthUrl = URL(string: urlString) else { return }
             print("Attempting to open URL: \(oauthUrl)")
 

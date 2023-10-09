@@ -50,7 +50,7 @@ struct Photo: Codable, Identifiable {
             case .original:
                 // You'd need the original secret and format for this, which aren't provided in your current model
                 urlString = "https://live.staticflickr.com/\(server)/\(id)_\(secret)_o.jpg"
-                print(urlString) // Check this in the console
+//                print(urlString) // Check this in the console
             default:
                 urlString = "https://live.staticflickr.com/\(server)/\(id)_\(secret)_\(size.rawValue).jpg"
 //                print("Default urlstring: \(urlString)") // Check this in the console
