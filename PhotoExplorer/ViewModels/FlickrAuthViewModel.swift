@@ -52,6 +52,9 @@ class FlickrAuthViewModel: ObservableObject {
 
     func logout() {
         // Log out the user
+        print("Oauth token before logout: \(oauthService.oauthClient?.credential.oauthToken)")
+        print("Oauth secret before logout: \(oauthService.oauthClient?.credential.oauthTokenSecret)")
+        print("Oauth refresh token before logout: \(oauthService.oauthClient?.credential.oauthRefreshToken)")
         oauthService.logout()
         isAuthenticated = false
     }

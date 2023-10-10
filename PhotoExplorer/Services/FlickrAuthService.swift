@@ -256,7 +256,6 @@ class FlickrOAuthService: NSObject, ObservableObject {
                  url.query?.urlQueryStringParameters => ["oauth_token": "XXXX", "oauth_verifier": "YYYY"]
                  */
                 guard let verifier = parameters["oauth_verifier"] else { return }
-                
                 // Start Step 3: Request Access Token
                 let accessTokenInput = RequestAccessTokenInput(consumerKey: FLICKR_CONSUMER_KEY,
                                                                consumerSecret: FLICKR_CONSUMER_SECRET,
