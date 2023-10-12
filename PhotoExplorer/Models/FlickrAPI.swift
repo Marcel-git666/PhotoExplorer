@@ -15,3 +15,4 @@ struct FlickrAPI {
     static let secretKey = "c5f5b480e197a72f"
     
 }
+

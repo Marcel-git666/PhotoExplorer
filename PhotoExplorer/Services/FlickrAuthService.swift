@@ -257,6 +257,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
                  */
                 guard let verifier = parameters["oauth_verifier"] else { return }
                 // Start Step 3: Request Access Token
+                print("Oauth token: \(oAuthTokenResponse.oauthToken)")
                 let accessTokenInput = RequestAccessTokenInput(consumerKey: FLICKR_CONSUMER_KEY,
                                                                consumerSecret: FLICKR_CONSUMER_SECRET,
                                                                requestToken: oAuthTokenResponse.oauthToken,
@@ -277,6 +278,7 @@ class FlickrOAuthService: NSObject, ObservableObject {
                                                                                      consumerSecret: FLICKR_CONSUMER_SECRET,
                                                                                      accessToken: self.credential!.accessToken,
                                                                                      accessTokenSecret: self.credential!.accessTokenSecret))
+                        print("Final process, access token is: \(self.credential?.accessToken ?? "obscure error")")
                     }
                 }
                 
